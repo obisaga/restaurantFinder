@@ -1,35 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Raleway:wght@400;600&display=swap');
+
 
 #root {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* max-width: 1200px; */
+  margin: 0;
+  padding: 0;
   text-align: center;
+  background-color: #8a9fc3;
+
 } 
+.header{
+  padding-top: 3rem;
+  color: #262a69;
+}
 
-
+.header h2{
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-size: 5em;
+  font-style: normal;
+}
 
 .cards{
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr); 
+  padding: 0 2rem 0 2rem;
 } 
 
 .card{
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   
 }
 
-.card:hover {
-  background-color: #c7c6c3;
+.cardbody:hover {
+  background-color: #f5f1ed;
 }
 
-.cardBody {
-  background-color: #f2f0e9;
+
+
+.cardbody {
+  background-color: #ffffff;
+  /* display: flex;
+  flex-direction: row; */
 }
 
+.cardimg{
+  width: 15rem !important;
+
+}
 .cardTitle{
-  color: #F38F00 !important;
+  color: #ebcd37 !important;
   text-shadow: -1px 0 rgba(39, 23, 9, 0.463), 0 1px rgba(39, 23, 9, 0.463), 1px 0 rgba(39, 23, 9, 0.463), 0 -1px rgba(39, 23, 9, 0.463);
   padding-top: 5%;
   padding-bottom: 5%;
@@ -38,12 +60,18 @@
 
 
 
-/* 
-.all{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
+
+ul {
+  list-style-type: none;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -52,9 +80,15 @@
     grid-template-columns: repeat(2, 1fr); 
   }
 
-  .header{
+  /* .header{
     font-size: 5rem;
     padding-bottom: 5%;
+  } */
+}
+
+@media (max-width: 1000px) {
+  .cards{
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
@@ -65,5 +99,3 @@
 
 }
 
-@media (max-width: 750px) {
-  }

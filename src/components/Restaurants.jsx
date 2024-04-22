@@ -49,7 +49,7 @@ const Restaurants = () => {
                                     <p>{place.name}</p>
                                    
                                 </Card.Title>
-                                <p>Star Rating: {place.rating.starRating}</p>
+                                 <p>Star Rating: {place.rating.starRating}</p>
                                     <p>Address: {place.address.firstLine}, {place.address.city}, {place.address.postalCode}</p>
                                     <ul>
                                         {place.cuisines.map((cuisine, cuisineIndex) => (
