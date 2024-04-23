@@ -2,7 +2,7 @@
   "name": "resfind",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://obisaga.github.io/resFinder",
+  "homepage": "https://obisaga.github.io/restaurantFinder",
 
   "type": "module",
   "scripts": {
