@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Raleway:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&display=swap');
 
 
 #root {
@@ -7,55 +6,130 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  background-color: #8a9fc3;
-
-} 
-.header{
-  padding-top: 3rem;
-  color: #262a69;
+  background-color: #ebebeb;
+  background-image: url("https://images.pexels.com/photos/696218/pexels-photo-696218.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
-.header h2{
-  font-family: "Amatic SC", sans-serif;
+
+
+.body {
+  background-color: #8a9fc3;
+
+
+}
+
+.top {
+
+
+  height: auto;
+  background: rgba(222, 203, 218, 0.2);
+  margin: 0 2rem;
+  padding: 2rem 0;
+
+}
+
+
+.header {
+  padding-top: 3rem;
+
+
+}
+
+
+.header h2 {
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 5em;
   font-style: normal;
+  color: #ffb91d;
+  padding-top: 4rem;
+
 }
 
-.cards{
+.header h1 {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-size: 5em;
+  font-style: normal;
+  color: #961b68;
+  text-shadow: 1px 3px 4px #ffb91d;
+  margin-top: -3.2rem;
+
+}
+
+
+
+.text1 {
+  padding-top: 2rem;
+  color: #ebebeb;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+
+.searchPost {
+  padding-bottom: 3rem;
+
+
+}
+
+.cards {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
   padding: 0 2rem 0 2rem;
-} 
+  font-family: "Montserrat", sans-serif;
+  margin-top: 2rem;
+  padding-bottom: 10rem;
 
-.card{
+}
+
+
+.card {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  
+  padding: 0 2rem 0 2rem;
+  border: none !important;
 }
 
-.cardbody:hover {
-  background-color: #f5f1ed;
-}
 
+.card:hover {
+  background-color: #ddcad3 !important;
+
+}
 
 
 .cardbody {
-  background-color: #ffffff;
-  /* display: flex;
-  flex-direction: row; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  align-content: stretch;
 }
 
-.cardimg{
+.bodytext {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.cardimg {
+  /* padding-top: 15%; */
   width: 15rem !important;
 
 }
-.cardTitle{
-  color: #ebcd37 !important;
+
+.cardTitle {
+  font-family: "Permanent Marker";
+  color: #961b68 !important;
   text-shadow: -1px 0 rgba(39, 23, 9, 0.463), 0 1px rgba(39, 23, 9, 0.463), 1px 0 rgba(39, 23, 9, 0.463), 0 -1px rgba(39, 23, 9, 0.463);
-  padding-top: 5%;
-  padding-bottom: 5%;
-  font-size: 1rem 
+  font-size: 1rem;
+  height: 3rem;
+  overflow: hidden;
+  padding-top: 5px;
 }
 
 
@@ -63,39 +137,90 @@
 
 ul {
   list-style-type: none;
+  text-align: left;
 }
 
 
+.buttonNext {
+  width: 200%;
+  background-color: #961b68 !important;
+  border: none !important;
 
+}
 
+.buttonNext:hover {
+  background-color: #13adee !important;
+  border: none !important;
+}
 
-
-
-
-
+.infoText {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
 
 
 @media (max-width: 1024px) {
-  .cards{
-    grid-template-columns: repeat(2, 1fr); 
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  /* .header{
-    font-size: 5rem;
-    padding-bottom: 5%;
-  } */
-}
-
-@media (max-width: 1000px) {
-  .cards{
-    grid-template-columns: repeat(2, 1fr); 
-  }
-}
-
-@media (max-width: 650px) {
-  .cards{
-    grid-template-columns: repeat(1, 1fr); 
-  }
 
 }
 
+
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 2rem;
+  }
+
+  .buttonNext {
+    width: 100%;
+  }
+
+  .header {
+    padding-top: 2rem;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 3rem;
+  }
+
+  .header h2 {
+    font-size: 2.6em;
+  }
+
+  .header h1 {
+    font-size: 2.6em;
+    margin-top: -1.4rem;
+
+  }
+}
+
+@media (max-width: 576px) {
+  .top {
+    margin: 0;
+    padding: 1rem 0;
+  }
+
+  .header h2 {
+    font-size: 2em;
+  }
+
+  .header h1 {
+    font-size: 2em;
+    margin-top: -1.4rem;
+
+  }
+
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 1rem;
+  }
+
+}
