@@ -12,7 +12,7 @@ function App() {
     <>
   
         <Routes>
-          <Route path="/" element={<Navi />} />
+          <Route path="/resFinder" element={<Navi />} />
         </Routes>
     </>
   );
