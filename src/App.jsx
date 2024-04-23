@@ -12,7 +12,7 @@ function App() {
     <>
   
         <Routes>
-          <Route path="/restaurantFinder" element={<Navi />} />
+          <Route path="/" element={<Navi />} />
         </Routes>
     </>
   );
