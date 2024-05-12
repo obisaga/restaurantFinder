@@ -11,7 +11,6 @@ import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 
-
 const Navi = () => {
   const [postcode, setPostcode] = useState([]);
   const [input, setInput] = useState("");
@@ -60,9 +59,16 @@ const Navi = () => {
 
   // Function to handle next page
   const nextPage = () => {
-  // Scroll to the top of the page
+    // Scroll to the top of the page
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentPage(currentPage + 1);
+  };
+
+  // Function to handle previous page
+  const prevPage = () => {
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCurrentPage(currentPage - 1);
   };
 
   const handleClose = () => setShow(false);
@@ -71,32 +77,23 @@ const Navi = () => {
   return (
     <div>
       <div className='top'>
-        
-          <div className='header'><h2>RESTAURANTS</h2><h1>Near Me</h1></div>
+        <div className='header'><h2>RESTAURANTS</h2><h1>Near Me</h1></div>
         <div className="searchPost">
           <p className='text1'>Where are you?</p>
-
           <Form onSubmit={handleSubmit} className="searchForm">
-          
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        
-      <input
-              type="text"
-              placeholder="Post Code"
-              value={input}
-              onChange={handleChange}
-              className='inputSearch'
-            />
-      </Form.Group>
-      <Button variant="outline-light" type="submit" className="searchButton">Search</Button>
-      
-    </Form></div>
-        
-
-
-          
-          {loading ? (<Spinner animation="border" variant="light" />) : null}
-        
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <input
+                type="text"
+                placeholder="Post Code"
+                value={input}
+                onChange={handleChange}
+                className='inputSearch'
+              />
+            </Form.Group>
+            <Button variant="outline-light" type="submit" className="searchButton">Search</Button>
+          </Form>
+        </div>
+        {loading ? (<Spinner animation="border" variant="light" />) : null}
       </div>
 
       {error ? (
@@ -135,11 +132,14 @@ const Navi = () => {
           <div className='button'>
             {currentRestaurants.length ? (
               <div>
-                <Button className='buttonNext'  size="lg" onClick={nextPage}>
-                  Next      
+                {currentPage > 1 && (
+                  <Button className='buttonPrev' size="lg" onClick={prevPage}>
+                   ⟪ Previous
+                  </Button>
+                )}
+                <Button className='buttonNext' size="lg" onClick={nextPage}>
+                  Next ⟫
                 </Button>
-
-
               </div>
             ) : null}
           </div>

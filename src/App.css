@@ -140,15 +140,14 @@ ul {
   text-align: left;
 }
 
-
-.buttonNext {
+.buttonNext, .buttonPrev {
   width: 200%;
   background-color: #961b68 !important;
   border: none !important;
-
+margin: 0.3rem;
 }
 
-.buttonNext:hover {
+.buttonNext:hover, .buttonPrev:hover {
   background-color: #13adee !important;
   border: none !important;
 }
