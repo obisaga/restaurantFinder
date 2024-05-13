@@ -16,8 +16,6 @@
 
 .body {
   background-color: #8a9fc3;
-
-
 }
 
 .top {
@@ -71,7 +69,24 @@
 
 .searchPost {
   padding-bottom: 3rem;
+}
 
+
+.sorting {
+  margin-top: 2rem;
+}
+
+.sorting,
+.sortingButton {
+  font-size: 1rem;
+  color: black !important;
+  font-family: "Montserrat", sans-serif !important;
+  background: none !important;
+  border: none !important;
+}
+
+.sortingButton:hover {
+  color: white !important;
 
 }
 
@@ -140,14 +155,16 @@ ul {
   text-align: left;
 }
 
-.buttonNext, .buttonPrev {
+.buttonNext,
+.buttonPrev {
   width: 200%;
   background-color: #961b68 !important;
   border: none !important;
-margin: 0.3rem;
+  margin: 0.3rem;
 }
 
-.buttonNext:hover, .buttonPrev:hover {
+.buttonNext:hover,
+.buttonPrev:hover {
   background-color: #13adee !important;
   border: none !important;
 }

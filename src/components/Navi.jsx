@@ -19,7 +19,9 @@ const Navi = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [restaurantsPerPage] = useState(10);
   const [show, setShow] = useState(false);
+  const [sortBy, setSortBy] = useState(null);
 
+  
   const fetchData = async (input) => {
     try {
       setLoading(true);
@@ -52,7 +54,7 @@ const Navi = () => {
     await fetchData(input);
   };
 
-  // Get current restaurants
+  // Get current 10 restaurants
   const indexOfLastRestaurant = currentPage * restaurantsPerPage;
   const indexOfFirstRestaurant = indexOfLastRestaurant - restaurantsPerPage;
   const currentRestaurants = postcode.slice(indexOfFirstRestaurant, indexOfLastRestaurant);
@@ -73,6 +75,31 @@ const Navi = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+  useEffect(() => {
+    if (sortBy) {
+      setLoading(true);
+      axios.get(`http://localhost:8080/restaurants/${input}`)
+        .then(response => {
+          const sortedRestaurants = response.data.restaurants.slice().sort((a, b) => {
+            if (sortBy === 'topRated') {
+              return b.rating.starRating - a.rating.starRating;
+            } else if (sortBy === 'lowRated') {
+              return a.rating.starRating - b.rating.starRating;
+            }
+          });
+          setPostcode(sortedRestaurants);
+        })
+        .catch(error => {
+          console.error('Error fetching restaurants:', error);
+          setPostcode([]);
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [sortBy]);
+
+  
 
   return (
     <div>
@@ -111,37 +138,45 @@ const Navi = () => {
       ) : null}
 
       {!loading && (
-        <div className='cards'>
-          {currentRestaurants.map((place, index) => (
-            <Card className="card" key={index}>
-              <Card.Body className='cardbody'>
-                <div className='bodyimg'><Card.Img className='cardimg' src="https://cdn270-genai.picsart.com/54fe4413-217f-4095-a43a-1014161248e0/451509696034201.jpg" /></div>
-                <div className='bodytext'>
-                  <Card.Title className="cardTitle"> <p>{place.name}</p> </Card.Title>
-                  <p className='infoText'>Rating: {place.rating.starRating} <Rating name="read-only" value={place.rating.starRating} readOnly /> </p>
-                  <p className='infoText'> {place.address.firstLine}, {place.address.city}, {place.address.postalCode}</p>
-                  <ul>
-                    {place.cuisines.map((cuisine, cuisineIndex) => (
-                      <li key={cuisineIndex} className='infoText'> &#35;&#65039;&#8419; {cuisine.name}</li>
-                    ))}
-                  </ul>
-                </div>
-              </Card.Body>
-            </Card>
-          ))}
-          <div className='button'>
-            {currentRestaurants.length ? (
-              <div>
-                {currentPage > 1 && (
-                  <Button className='buttonPrev' size="lg" onClick={prevPage}>
-                   ⟪ Previous
+        <div>
+
+          {postcode.length ?<div>  <p className='sorting'>Sort by:</p>
+          <Button className='sortingButton'  onClick={() => setSortBy('topRated')}> ▲ Top Rated</Button>
+          <Button className='sortingButton'  onClick={() => setSortBy('lowRated')}> ▼ Low Rated</Button> </div> : null}
+         
+
+          <div className='cards'>
+            {currentRestaurants.map((place, index) => (
+              <Card className="card" key={index}>
+                <Card.Body className='cardbody'>
+                  <div className='bodyimg'><Card.Img className='cardimg' src="https://cdn270-genai.picsart.com/54fe4413-217f-4095-a43a-1014161248e0/451509696034201.jpg" /></div>
+                  <div className='bodytext'>
+                    <Card.Title className="cardTitle"> <p>{place.name}</p> </Card.Title>
+                    <p className='infoText'>Rating: {place.rating.starRating} <Rating name="read-only" value={place.rating.starRating} readOnly /> </p>
+                    <p className='infoText'> {place.address.firstLine}, {place.address.city}, {place.address.postalCode}</p>
+                    <ul>
+                      {place.cuisines.map((cuisine, cuisineIndex) => (
+                        <li key={cuisineIndex} className='infoText'> &#35;&#65039;&#8419; {cuisine.name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </Card.Body>
+              </Card>
+            ))}
+            <div className='button'>
+              {currentRestaurants.length ? (
+                <div>
+                  {currentPage > 1 && (
+                    <Button className='buttonPrev' size="lg" onClick={prevPage}>
+                      ⟪ Previous
+                    </Button>
+                  )}
+                  <Button className='buttonNext' size="lg" onClick={nextPage}>
+                    Next ⟫
                   </Button>
-                )}
-                <Button className='buttonNext' size="lg" onClick={nextPage}>
-                  Next ⟫
-                </Button>
-              </div>
-            ) : null}
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       )}
